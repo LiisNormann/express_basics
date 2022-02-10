@@ -1,4 +1,17 @@
-//const res = require("express");
+const express = require('express');
+const app = express();
+
+app.get('/user/:username', (req, res)=> {
+    let user = req.params.username;
+    res.render('index.ejs', {username : user});
+});
+
+app.listen(3000, ()=> {
+    console.log('Server started on http://localhost:3000');
+});
+
+/*
+
 const express = require("express");
 const app = express();
 //set up brouther address row router
@@ -22,4 +35,4 @@ app.get('*', (req, res)=> {
 //listen app via port
 app.listen(3000, ()=> {
     console.log('Server started on http://localhost:3000');
-});
+});*/
