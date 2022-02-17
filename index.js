@@ -1,6 +1,8 @@
 const express = require('express');
-const path = require("path");
 const app = express();
+
+const path = require("path");
+
 //add public directory
 app.use(express.static('public'));
 //add views directory path
@@ -8,9 +10,14 @@ app.set('views', path.join(__dirname, 'views'));
 //add views template engine
 app.set('view engine', 'ejs');
 
-app.get('/user/:username', (req, res)=> {
-    let user = req.params.username;
-    res.render('index.ejs', {username : user});
+app.get('/questions', (req, res)=> {
+
+    let questions = [
+        {title: "What is Node.js?", user: "Kadi", votes: "10"},
+        {title: "What is Express.js?", user: "Mike", votes: "8"}
+    ]
+
+    res.render('index', {questions:questions});
 });
 
 app.listen(3000, ()=> {
